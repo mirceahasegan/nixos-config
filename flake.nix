@@ -9,15 +9,15 @@
 
   outputs = { self, nixpkgs, home-manager }: {
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
+      vm-1 = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         modules = [
-          ./configuration.nix
+          ./hosts/vm-1/configuration.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.mircea = import ./home.nix;
+            home-manager.users.mircea = import ./shared/home.nix;
           }
         ];
       };
