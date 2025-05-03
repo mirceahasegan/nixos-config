@@ -12,7 +12,7 @@ if [ -z "$HOST" ]; then
   exit 1
 fi
 
-echo "Using $REPO_DIR config root folder"
+echo "Using $REPO_DIR config root folder. Switching to $REPO_DIR#$HOST"
 if [ -n "${DO_UPDATE+x}" ]; then
   echo "Running flake update.."
   nix flake update "$REPO_DIR"
