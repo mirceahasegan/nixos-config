@@ -41,3 +41,7 @@ ip addr show
 nixos-generate-config --root /mnt
 ```
 4. Copy the new `hardware-configuration.nix` into the flake repo
+5. Create a new `hosts/<new-host-name>` folder
+6. Copy the new hardware-configuration.nix file in this new folder
+7. Copy the configuration.nix file from one of the other hosts and update the hostName to match the new one.
+8. Add a new entry in the `flake.nix` file `nixosConfigurations` for the new host
