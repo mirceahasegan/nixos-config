@@ -44,6 +44,7 @@
     ripgrep
     fd
     tmux
+    spice-vdagent # for clipboard tools in VM
   ];
 
   home.sessionVariables = {

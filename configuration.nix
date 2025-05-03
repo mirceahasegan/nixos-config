@@ -27,6 +27,9 @@
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
 
+  # Spice tools for clipboard functionality
+  services.spice-vdagentd.enable = true;
+
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
