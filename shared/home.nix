@@ -12,9 +12,20 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "zsh-autosuggestions" "zsh-autosuggestions" ];
+      plugins = [ "git" ];
       theme = "robbyrussell";
     };
+
+    plugins = [
+      {
+        name = "zsh-autosuggestions";
+        src = pkgs.zsh-autosuggestions;
+      }
+      {
+        name = "zsh-syntax-highlighting";
+        src = pkgs.zsh-syntax-highlighting;
+      }
+    ];
   };
 
   programs.git = {
@@ -45,6 +56,7 @@
     fd
     tmux
     spice-vdagent # for clipboard tools in VM
+    zsh
   ];
 
   home.sessionVariables = {
