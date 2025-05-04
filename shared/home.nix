@@ -53,6 +53,21 @@
     '';
   };
 
+  programs.tmux = {
+    enable = true;
+    mouse = true;
+    keyMode = "vi";
+    terminal = "screen-256color";
+    shell = "${pkgs.zsh}/bin/zsh";
+
+    extraConfig = ''
+      bind-key -T prefix m set mouse
+      set-option -g history-limit 200000
+      bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
+      set-option -g set-clipboard off
+    '';
+  };
+
   home.packages = with pkgs; [
     git
     htop
