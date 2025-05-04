@@ -76,7 +76,7 @@
     enable = true;
     userSettings = {
       "editor.fontFamily" = "Victor Mono";
-      "editor.fontLigatures" = true;
+      "editor.fontLigatures" = false;
       "editor.fontSize" = 14;
       "workbench.colorTheme" = "One Dark Pro";
     };
@@ -109,6 +109,8 @@
     zsh
     vscode
     victor-mono # nicest font ever
+    nodejs_22
+    pnpm
   ];
 
   home.sessionVariables = {
