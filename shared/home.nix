@@ -32,6 +32,14 @@
     enable = true;
     userName = "Mircea Hasegan";
     userEmail = "mircea.hasegan@gmail.com";
+    aliases = {
+      hist = "log --oneline --decorate";
+      pf = "push --force-with-lease";
+      aliases = "config --get-regexp ^alias\.";
+    };
+    extraConfig = {
+      core.editor = "vim";
+    };
   };
 
   programs.vim = {
