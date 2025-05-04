@@ -111,6 +111,7 @@
     victor-mono # nicest font ever
     nodejs_22
     pnpm
+    docker
   ];
 
   home.sessionVariables = {
