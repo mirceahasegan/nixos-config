@@ -78,6 +78,7 @@
       "editor.fontFamily" = "Victor Mono";
       "editor.fontLigatures" = true;
       "editor.fontSize" = 14;
+      "workbench.colorTheme" = "One Dark Pro";
     };
     extensions = with pkgs.vscode-extensions; [
       eamodio.gitlens
@@ -90,6 +91,7 @@
       ms-vscode-remote.remote-ssh-edit
       redhat.vscode-yaml
       ms-azuretools.vscode-docker
+      zhuangtongfa.material-theme
     ];
   };
 
