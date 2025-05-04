@@ -21,6 +21,18 @@
           }
         ];
       };
+      desktop-pc = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/desktop-pc/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.mircea = import ./shared/home.nix;
+          }
+        ];
+      };
     };
   };
 }
