@@ -68,6 +68,22 @@
     '';
   };
 
+  programs.vscode = {
+    enable = true;
+    extensions = with pkgs.vscode-extensions; [
+      eamodio.gitlens
+      ms-vsliveshare.vsliveshare
+      bierner.markdown-mermaid
+      bbenoist.nix
+      zhuangtongfa.material-theme
+      johnpapa.vscode-peacock
+      ms-vscode-remote.remote-ssh
+      ms-vscode-remote.remote-ssh-edit
+      redhat.vscode-yaml
+      ms-azuretools.vscode-docker
+    ];
+  };
+
   home.packages = with pkgs; [
     git
     htop
@@ -80,6 +96,7 @@
     tmux
     spice-vdagent # for clipboard tools in VM
     zsh
+    vscode
   ];
 
   home.sessionVariables = {

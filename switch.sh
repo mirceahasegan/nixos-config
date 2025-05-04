@@ -2,7 +2,7 @@
 set -eo pipefail
 
 REPO_DIR="$(dirname "$(realpath "$0")")"
-HOST=$1
+HOST="${1:-$(hostname)}"
 DO_UPDATE=$2
 
 # Check if hostname was provided
