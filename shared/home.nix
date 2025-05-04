@@ -4,7 +4,11 @@
 
   home.stateVersion = "24.11";
 
-  programs.home-manager.enable = true;
+  fonts.fontconfig.enable = true;
+
+  programs.home-manager = {
+    enable = true;
+  };
 
   programs.zsh = {
     enable = true;
@@ -70,6 +74,11 @@
 
   programs.vscode = {
     enable = true;
+    userSettings = {
+      "editor.fontFamily" = "Victor Mono";
+      "editor.fontLigatures" = true;
+      "editor.fontSize" = 14;
+    };
     extensions = with pkgs.vscode-extensions; [
       eamodio.gitlens
       ms-vsliveshare.vsliveshare
@@ -97,6 +106,7 @@
     spice-vdagent # for clipboard tools in VM
     zsh
     vscode
+    victor-mono # nicest font ever
   ];
 
   home.sessionVariables = {
