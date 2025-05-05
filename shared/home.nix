@@ -113,7 +113,7 @@
     pnpm
     docker
     lazydocker
-  ];
+  ] ++ (if pkgs.stdenv.hostPlatform.system == "x86_64-linux" then [ slack ] else []);
 
   home.sessionVariables = {
     EDIT = "vim";
