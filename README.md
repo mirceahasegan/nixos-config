@@ -81,3 +81,7 @@ passwd mircea
 ```
 1. Move the configuration folder in the user home dir: `mv /etc/nixos/nixos-config ~/`
 1. Push the changes to preserve the configuration
+
+## Useful resources
+
+1. [home-manager package options](https://nix-community.github.io/home-manager/options.xhtml). Set things like git username and default editor.
