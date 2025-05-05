@@ -112,6 +112,7 @@
     nodejs_22
     pnpm
     docker
+    lazydocker
   ];
 
   home.sessionVariables = {
