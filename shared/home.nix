@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
   home.username = "mircea";
-  home.homeDirectory = "/home/mircea";
+  home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/mircea" else "/home/mircea";
 
   home.stateVersion = "24.11";
 
@@ -72,28 +72,28 @@
     '';
   };
 
-  programs.vscode = {
-    enable = true;
-    userSettings = {
-      "editor.fontFamily" = "Victor Mono";
-      "editor.fontLigatures" = false;
-      "editor.fontSize" = 14;
-      "workbench.colorTheme" = "One Dark Pro";
-    };
-    extensions = with pkgs.vscode-extensions; [
-      eamodio.gitlens
-      ms-vsliveshare.vsliveshare
-      bierner.markdown-mermaid
-      bbenoist.nix
-      zhuangtongfa.material-theme
-      johnpapa.vscode-peacock
-      ms-vscode-remote.remote-ssh
-      ms-vscode-remote.remote-ssh-edit
-      redhat.vscode-yaml
-      ms-azuretools.vscode-docker
-      zhuangtongfa.material-theme
-    ];
-  };
+  # programs.vscode = {
+  #   enable = true;
+  #   userSettings = {
+  #     "editor.fontFamily" = "Victor Mono";
+  #     "editor.fontLigatures" = false;
+  #     "editor.fontSize" = 14;
+  #     "workbench.colorTheme" = "One Dark Pro";
+  #   };
+  #   extensions = with pkgs.vscode-extensions; [
+  #     eamodio.gitlens
+  #     ms-vsliveshare.vsliveshare
+  #     bierner.markdown-mermaid
+  #     bbenoist.nix
+  #     zhuangtongfa.material-theme
+  #     johnpapa.vscode-peacock
+  #     ms-vscode-remote.remote-ssh
+  #     ms-vscode-remote.remote-ssh-edit
+  #     redhat.vscode-yaml
+  #     ms-azuretools.vscode-docker
+  #     zhuangtongfa.material-theme
+  #   ];
+  # };
 
   home.packages = with pkgs; [
     git
@@ -105,19 +105,22 @@
     ripgrep
     fd
     tmux
-    spice-vdagent # for clipboard tools in VM
     zsh
-    vscode
     victor-mono # nicest font ever
     nodejs_22
     pnpm
     docker
     lazydocker
-  ] ++ (if pkgs.stdenv.hostPlatform.system == "x86_64-linux" then [ slack ] else []);
+  ] ++ (if pkgs.stdenv.hostPlatform.system == "x86_64-linux" then [
+      # vscode
+      slack
+      spice-vdagent
+    ] else []);
 
   home.sessionVariables = {
     EDIT = "vim";
     PAGER = "less";
   };
-}
 
+  # nixpkgs.config.allowUnfree = true;
+}

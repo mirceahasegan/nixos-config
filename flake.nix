@@ -28,5 +28,14 @@
         vm-1 = mkHost "vm-1" "aarch64-linux";
         desktop-pc = mkHost "desktop-pc" "x86_64-linux";
       };
+
+      homeConfigurations = {
+        macos = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs { system = "aarch64-darwin"; };
+          modules = [
+            ./shared/home.nix
+          ];
+        };
+      };
     };
 }
