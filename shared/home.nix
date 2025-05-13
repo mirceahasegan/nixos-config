@@ -111,6 +111,7 @@
     pnpm
     docker
     lazydocker
+    corepack
   ] ++ (if pkgs.stdenv.hostPlatform.system == "x86_64-linux" then [
       # vscode
       slack
