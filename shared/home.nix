@@ -110,6 +110,7 @@
     nodejs_22
     pnpm
     docker
+    colima # docker runtime
     lazydocker
     corepack
     yt-dlp

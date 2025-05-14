@@ -12,6 +12,13 @@ if [ -z "$HOST" ]; then
   exit 1
 fi
 
+# Check if the script is running on macOS
+if [[ "$(uname)" == "Darwin" ]]; then
+  echo "Detected macOS. Using home-manager switch. Ignoring the 'Hostname' argument."
+  home-manager switch --flake "$REPO_DIR#macos"
+  exit 0
+fi
+
 echo "Using $REPO_DIR config root folder. Switching to $REPO_DIR#$HOST"
 if [ -n "${DO_UPDATE+x}" ]; then
   echo "Running flake update.."
