@@ -72,29 +72,6 @@
     '';
   };
 
-  # programs.vscode = {
-  #   enable = true;
-  #   userSettings = {
-  #     "editor.fontFamily" = "Victor Mono";
-  #     "editor.fontLigatures" = false;
-  #     "editor.fontSize" = 14;
-  #     "workbench.colorTheme" = "One Dark Pro";
-  #   };
-  #   extensions = with pkgs.vscode-extensions; [
-  #     eamodio.gitlens
-  #     ms-vsliveshare.vsliveshare
-  #     bierner.markdown-mermaid
-  #     bbenoist.nix
-  #     zhuangtongfa.material-theme
-  #     johnpapa.vscode-peacock
-  #     ms-vscode-remote.remote-ssh
-  #     ms-vscode-remote.remote-ssh-edit
-  #     redhat.vscode-yaml
-  #     ms-azuretools.vscode-docker
-  #     zhuangtongfa.material-theme
-  #   ];
-  # };
-
   home.packages = with pkgs; [
     git
     htop
@@ -114,10 +91,14 @@
     lazydocker
     corepack
     yt-dlp
+    utm
+    rsync
   ] ++ (if pkgs.stdenv.hostPlatform.system == "x86_64-linux" then [
-      # vscode
       slack
       spice-vdagent
+    ] else if pkgs.stdenv.hostPlatform.system == "aarch64-darwin" then [
+      slack
+      iterm2
     ] else []);
 
   home.sessionVariables = {
@@ -125,5 +106,5 @@
     PAGER = "less";
   };
 
-  # nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
 }
