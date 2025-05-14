@@ -112,6 +112,7 @@
     docker
     lazydocker
     corepack
+    yt-dlp
   ] ++ (if pkgs.stdenv.hostPlatform.system == "x86_64-linux" then [
       # vscode
       slack
