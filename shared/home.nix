@@ -72,6 +72,20 @@
     '';
   };
 
+  programs.gpg = {
+    enable = true;
+    settings = {
+      use-agent = true; # Tell GPG to use the gpg-agent for key operations
+    };
+  };
+
+  services.gpg-agent = {
+    enable = true; # Start the gpg-agent background service
+    defaultCacheTtl = 1800; # Time (in seconds) a passphrase stays cached
+    maxCacheTtl = 7200;     # Max time (in seconds) a passphrase can be cached
+    pinentry.package = pkgs.pinentry-curses; # macOS-friendly pinentry; "curses" is reliable in terminal
+  };
+
   home.packages = with pkgs; [
     git
     htop
