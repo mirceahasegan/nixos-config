@@ -97,7 +97,6 @@
       slack
       spice-vdagent
     ] else if pkgs.stdenv.hostPlatform.system == "aarch64-darwin" then [
-      slack
       iterm2
     ] else []);
 
