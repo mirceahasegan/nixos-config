@@ -34,17 +34,71 @@
 
   programs.git = {
     enable = true;
+
+    # 🧑 Default identity
     userName = "Mircea Hasegan";
-    userEmail = "mircea.hasegan@gmail.com";
+    # userEmail = "mircea.hasegan@iohk.io";
+
+    # signing = {
+    #   key = "A975E37E7053466EDED32653D6A4DD7DB6AAB2BD";
+    #   signByDefault = true;
+    # };
+
     aliases = {
       hist = "log --oneline --decorate";
       pf = "push --force-with-lease";
-      aliases = "config --get-regexp ^alias\.";
+      aliases = "config --get-regexp ^alias\\.";
     };
+
     extraConfig = {
       core.editor = "vim";
+      "filter \"lfs\"" = {
+        smudge = "git-lfs smudge -- %f";
+        process = "git-lfs filter-process";
+        required = true;
+        clean = "git-lfs clean -- %f";
+      };
+
+      core.pager = "delta";
+      interactive.diffFilter = "delta --color-only";
+
+      delta = {
+        navigate = true;
+        dark = true;
+        line-numbers = true;
+      };
+
+      merge.conflictstyle = "zdiff3";
+
+      # 🔁 Conditional config for work folder
+      "includeIf \"gitdir:${config.home.homeDirectory}/me/\"" = {
+        path = "${config.home.homeDirectory}/.gitconfig-me";
+      };
+
+      # 🔁 Conditional config for personal folder
+      "includeIf \"gitdir:${config.home.homeDirectory}/iog/\"" = {
+        path = "${config.home.homeDirectory}/.gitconfig-iog";
+      };
     };
   };
+
+  # 🧾 Git config for personal projects
+  home.file.".gitconfig-me".text = ''
+    [user]
+      email = mircea.hasegan@gmail.com
+      signingkey = A975E37E7053466EDED32653D6A4DD7DB6AAB2BD
+    [commit]
+      gpgsign = true
+  '';
+
+  # 🧾 Git config for IOG projects
+  home.file.".gitconfig-iog".text = ''
+    [user]
+      email = mircea.hasegan@iohk.io
+      signingkey = A975E37E7053466EDED32653D6A4DD7DB6AAB2BD
+    [commit]
+      gpgsign = true
+  '';
 
   programs.vim = {
     enable=true;
@@ -88,6 +142,8 @@
 
   home.packages = with pkgs; [
     git
+    delta
+    git-lfs
     htop
     neovim
     curl
