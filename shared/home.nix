@@ -20,6 +20,18 @@
       theme = "robbyrussell";
     };
 
+    shellAliases = {
+      # 🐚 Aliases for convenience
+      ll = "ls -l";
+      la = "ls -lah";
+      l = "ls -CF";
+      g = "git";
+      v = "vim";
+      c = "clear";
+      h = "history";
+      secureInputState  = "ioreg -l -d 1 -w 0 | grep SecureInput";
+    };
+
     plugins = [
       {
         name = "zsh-autosuggestions";
