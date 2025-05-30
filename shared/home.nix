@@ -153,6 +153,8 @@
   };
 
   home.packages = with pkgs; [
+    jq
+    yalc
     git
     delta
     git-lfs
