@@ -153,6 +153,7 @@
   };
 
   home.packages = with pkgs; [
+    asciinema
     jq
     yalc
     git
