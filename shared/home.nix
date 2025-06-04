@@ -176,13 +176,13 @@
     lazydocker
     corepack
     yt-dlp
-    utm
     rsync
   ] ++ (if pkgs.stdenv.hostPlatform.system == "x86_64-linux" then [
       slack
       spice-vdagent
     ] else if pkgs.stdenv.hostPlatform.system == "aarch64-darwin" then [
       iterm2
+      utm
     ] else []);
 
   home.sessionVariables = {
