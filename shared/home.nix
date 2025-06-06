@@ -177,11 +177,13 @@
     corepack
     yt-dlp
     rsync
+    kitty # terminal emulator for hyprland
   ] ++ (if pkgs.stdenv.hostPlatform.system == "x86_64-linux" then [
       slack
       spice-vdagent
       vscode
       pcloud
+      android-studio
     ] else if pkgs.stdenv.hostPlatform.system == "aarch64-darwin" then [
       iterm2
       utm
