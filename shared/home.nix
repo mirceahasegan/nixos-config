@@ -183,7 +183,7 @@
       spice-vdagent
       vscode
       pcloud
-      android-studio
+      # android-studio
     ] else if pkgs.stdenv.hostPlatform.system == "aarch64-darwin" then [
       iterm2
       utm
